@@ -1,0 +1,198 @@
+/* Setup the clock input and clock peripherial by Sat3llite5
+   
+   Use de X1 OSC 
+   
+   RL78 G13
+   R5F100LE
+   
+   
+*/
+																		   
+void ClockHardwareSetup(void){
+
+	/* Disable all interrupts */
+
+		DI();
+
+			            	/*  START HARDWARE SETUP   */
+
+
+	/*
+	 *             CMC (Format of Clock Operation Mode Control Register)
+	 *       		7        6       5        4       3     2        1       0
+	 *            ---------------------------------------------------------------
+	 *           | EXCLK | OSCSEL| EXCLKS | OSCSELS | 0 | AMPHS1 | AMPHS0 | AMPH |
+	 *            ---------------------------------------------------------------
+	 *
+	 *  Control of X1 clock oscillation frequency (AMPH)
+	 *
+	 *    0   1 MHz ≤ fX ≤ 10 MHz
+	 *    1 	10 MHz < fX ≤ 20 MHz
+	 *
+	 *  XT1 oscillator oscillation mode selection (AMPHS0,AMPHS1)
+	 *
+	 *    AMPHS1  AMPHS0
+	 *
+	 *      0        0        Low power consumption oscillation (default)
+	 *      0 		   1        Normal oscillation
+	 *      1        0        Ultra-low power consumption oscillation
+	 *      1        1        Setting prohibited
+	 *
+	 *  Subsystem clock pin operation mode (EXCLKS,OSCSELS)
+	 *
+	 *    EXCLKS  OSCSELS
+	 *
+	 *      0        0        Input port mode
+	 *      0        1        XT1 oscillation mode
+	 *  	  1        0        Input port mode
+	 *     	1        1        External clock input mode
+	 *
+	 *  High-speed system clock pin operation mode (EXCLK,OSCSEL)
+	 *
+	 *    EXCLK    OSCSEL
+	 *
+	 *      0        0        Input port mode
+	 *      0        1        X1 oscillation mode
+	 *      1        0        Input port mode
+	 *      1        1        External clock input mode
+	 *
+	 */
+
+		CMC = 0x43;		// X1 <= 20MHz - Normal Oscillation - Subsystem clk is not used - X1 oscillation mode
+
+	/*
+	 *    				Oscillation stabilization time select register (OSTS)
+	 *
+	 */
+
+		OSTS = 0x07;
+
+
+	/*					   Clock operation status control register (CSC)
+	 * 				         --------------------------------------------------------
+	 *                | MSTOP | XTSTOP |  0  |  0  |  0  |  0  |  0  | HIOSTOP |
+	 *                 --------------------------------------------------------
+	 *
+	 *  High-speed on-chip oscillator clock operation control    (HIOSTOP)
+	 *
+	 *      0          High-speed on-chip oscillator operating
+	 *      1          High-speed on-chip oscillator stopped
+	 *
+	 *  Subsystem clock operation control   (XTSTOP)
+	 *
+	 *      0          XT1 oscillator operating
+	 *      1          XT1 oscillator stopped
+	 *
+	 *  High-speed system clock operation control  (MSTOP)
+	 * 
+	 *  	  0          X1 oscillator operating
+	 *  	  1          X1 oscillator stopped
+	 *
+	 *
+	 */
+
+		CSC =  0x41;	// Only X1 operating
+
+	/*
+	 *
+	 *
+	 */
+
+		OSTC = 0xF0;
+
+	/*
+	 * 				  Format of System Clock Control Register (CKC)
+	 *
+	 * 				  7     6     5     4      3     2     1     0
+	 *              ------------------------------------------------
+	 *             | CLS | CSS | MCS | MCM0 |  0  |  0  |  0  |  0  |
+	 *              ------------------------------------------------
+	 *
+	 *  Main system clock (fMAIN) operation control (MCM0)
+	 *
+	 *     0             Selects the high-speed on-chip oscillator clock (fIH) as the main system clock (fMAIN)
+	 *     1             Selects the high-speed system clock (fMX) as the main system clock (fMAIN)
+	 *
+	 *  Status of Main system clock (fMAIN) (MCS)
+	 *
+	 *     0             High-speed on-chip oscillator clock (fIH)
+	 *     1             High-speed system clock (fMX)
+	 *
+	 *  Selection of CPU/peripheral hardware clock (fCLK) (CSS)
+	 *
+	 *     0             Main system clock (fMAIN)
+	 *     1             Subsystem clock (fSUB)
+	 *
+	 *  Status of CPU/peripheral hardware clock (fCLK) (CLS)
+	 *
+	 *     0             Main system clock (fMAIN)
+	 *     1             Subsystem clock (fSUB)
+	 *
+	 */
+
+		CKC = 0x30;		// Select HS CLK X1 main - Select main clk p peripherial
+
+
+	/*
+	 * 				            Peripheral enable register 0 (PER0)
+	 *
+	 * 		      -----------------------------------------------------------------------
+	 * 	         | RTCEN | IICA1EN | ADCEN | IICA0EN | SAU1EN | SAU0EN | TAU1EN | TAU0EN |
+	 *            -----------------------------------------------------------------------
+	 *
+	 *       RTCEN     Control of real-time clock (RTC) and interval timer input clock supply
+	 *
+	 *         0           Stops input clock supply
+	 *         1           Enables input clock supply
+	 *
+	 *       IICA1EN   Control of serial interface IICA1 input clock supply
+	 *
+	 *         0           Stops input clock supply
+	 *         1           Enables input clock supply
+	 *
+	 *       ADCEN     Control of A/D converter input clock supply
+	 *
+	 *         0           Stops input clock supply
+	 * 		     1           Enables input clock supply
+	 *
+	 * 		 IICA0EN     Control of serial interface IICA0 input clock supply
+	 *
+	 * 		     0           Stops input clock supply
+	 * 		     1           Enables input clock supply
+	 *
+	 * 		 SAU1EN      Control of serial array unit 1 input clock supply
+	 *
+	 * 		     0           Stops input clock supply
+	 * 		     1           Enables input clock supply
+	 *
+	 * 		 SAU0EN      Control of serial array unit 0 input clock supply
+	 *
+	 * 		     0           Stops input clock supply
+	 * 		     1           Enables input clock supply
+	 *
+	 * 		 TAU1EN      Control of timer array unit 1 input clock supply
+	 *
+	 * 		     0           Stops input clock supply
+	 * 		     1           Enables input clock supply
+	 *
+	 * 		 TAU0EN      Control of timer array unit 0 input clock supply
+	 *
+	 * 		     0           Stops input clock supply
+	 * 		     1           Enables input clock supply
+	 *
+	 */
+
+		PER0 = 0x0C;	// Enables input clock supply of serial array unit 0 and 1 (UART0, UART1 and UART2)
+
+	/*
+	 *
+	 *
+	 *
+	 */
+
+
+		/*  Enable All interrupts   */
+
+		EI();
+
+}
