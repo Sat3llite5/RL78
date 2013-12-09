@@ -26,7 +26,7 @@ void ClockHardwareSetup(void){
 	 *
 	 *  Control of X1 clock oscillation frequency (AMPH)
 	 *
-	 *    0   1 MHz ≤ fX ≤ 10 MHz
+	 *    0     1 MHz ≤ fX ≤ 10 MHz
 	 *    1 	10 MHz < fX ≤ 20 MHz
 	 *
 	 *  XT1 oscillator oscillation mode selection (AMPHS0,AMPHS1)
@@ -34,7 +34,7 @@ void ClockHardwareSetup(void){
 	 *    AMPHS1  AMPHS0
 	 *
 	 *      0        0        Low power consumption oscillation (default)
-	 *      0 		   1        Normal oscillation
+	 *      0 		 1        Normal oscillation
 	 *      1        0        Ultra-low power consumption oscillation
 	 *      1        1        Setting prohibited
 	 *
@@ -44,8 +44,8 @@ void ClockHardwareSetup(void){
 	 *
 	 *      0        0        Input port mode
 	 *      0        1        XT1 oscillation mode
-	 *  	  1        0        Input port mode
-	 *     	1        1        External clock input mode
+	 *  	1        0        Input port mode
+	 *  	1        1        External clock input mode
 	 *
 	 *  High-speed system clock pin operation mode (EXCLK,OSCSEL)
 	 *
@@ -69,7 +69,7 @@ void ClockHardwareSetup(void){
 
 
 	/*					   Clock operation status control register (CSC)
-	 * 				         --------------------------------------------------------
+	 * 				   --------------------------------------------------------
 	 *                | MSTOP | XTSTOP |  0  |  0  |  0  |  0  |  0  | HIOSTOP |
 	 *                 --------------------------------------------------------
 	 *
@@ -84,9 +84,9 @@ void ClockHardwareSetup(void){
 	 *      1          XT1 oscillator stopped
 	 *
 	 *  High-speed system clock operation control  (MSTOP)
-	 * 
-	 *  	  0          X1 oscillator operating
-	 *  	  1          X1 oscillator stopped
+	 *
+	 *  	0          X1 oscillator operating
+	 *  	1          X1 oscillator stopped
 	 *
 	 *
 	 */
@@ -153,32 +153,32 @@ void ClockHardwareSetup(void){
 	 *       ADCEN     Control of A/D converter input clock supply
 	 *
 	 *         0           Stops input clock supply
-	 * 		     1           Enables input clock supply
+	 * 		   1           Enables input clock supply
 	 *
-	 * 		 IICA0EN     Control of serial interface IICA0 input clock supply
+	 * 		 IICA0EN   Control of serial interface IICA0 input clock supply
 	 *
-	 * 		     0           Stops input clock supply
-	 * 		     1           Enables input clock supply
+	 * 		   0           Stops input clock supply
+	 * 		   1           Enables input clock supply
 	 *
-	 * 		 SAU1EN      Control of serial array unit 1 input clock supply
+	 * 		 SAU1EN    Control of serial array unit 1 input clock supply
 	 *
-	 * 		     0           Stops input clock supply
-	 * 		     1           Enables input clock supply
+	 * 		   0           Stops input clock supply
+	 * 		   1           Enables input clock supply
 	 *
-	 * 		 SAU0EN      Control of serial array unit 0 input clock supply
+	 * 		 SAU0EN    Control of serial array unit 0 input clock supply
 	 *
-	 * 		     0           Stops input clock supply
-	 * 		     1           Enables input clock supply
+	 * 		   0           Stops input clock supply
+	 * 		   1           Enables input clock supply
 	 *
-	 * 		 TAU1EN      Control of timer array unit 1 input clock supply
+	 * 		 TAU1EN    Control of timer array unit 1 input clock supply
 	 *
-	 * 		     0           Stops input clock supply
-	 * 		     1           Enables input clock supply
+	 * 		   0           Stops input clock supply
+	 * 		   1           Enables input clock supply
 	 *
-	 * 		 TAU0EN      Control of timer array unit 0 input clock supply
+	 * 		 TAU0EN Control of timer array unit 0 input clock supply
 	 *
-	 * 		     0           Stops input clock supply
-	 * 		     1           Enables input clock supply
+	 * 		   0           Stops input clock supply
+	 * 		   1           Enables input clock supply
 	 *
 	 */
 
