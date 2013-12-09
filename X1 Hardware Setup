@@ -19,7 +19,7 @@ void ClockHardwareSetup(void){
 
 	/*
 	 *             CMC (Format of Clock Operation Mode Control Register)
-	 *       		7        6       5        4       3     2        1       0
+	 *       	7        6       5        4       3     2        1       0
 	 *            ---------------------------------------------------------------
 	 *           | EXCLK | OSCSEL| EXCLKS | OSCSELS | 0 | AMPHS1 | AMPHS0 | AMPH |
 	 *            ---------------------------------------------------------------
