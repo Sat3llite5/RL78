@@ -131,7 +131,7 @@ void ClockHardwareSetup(void){
 	 */
 
 		CKC = 0x30;		// Select HS CLK X1 main - Select main clk p peripherial
-
+ 
 
 	/*
 	 * 				            Peripheral enable register 0 (PER0)
