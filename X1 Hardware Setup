@@ -44,8 +44,8 @@ void ClockHardwareSetup(void){
 	 *
 	 *      0        0        Input port mode
 	 *      0        1        XT1 oscillation mode
-	 *  1        0        Input port mode
-	 *  1        1        External clock input mode
+	 *      1        0        Input port mode
+	 *      1        1        External clock input mode
 	 *
 	 *  High-speed system clock pin operation mode (EXCLK,OSCSEL)
 	 *
