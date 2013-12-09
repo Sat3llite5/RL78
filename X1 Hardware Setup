@@ -68,8 +68,8 @@ void ClockHardwareSetup(void){
 		OSTS = 0x07;
 
 
-	/*					   Clock operation status control register (CSC)
-	 * 				   --------------------------------------------------------
+	/*	               Clock operation status control register (CSC)
+	 * 		   --------------------------------------------------------
 	 *                | MSTOP | XTSTOP |  0  |  0  |  0  |  0  |  0  | HIOSTOP |
 	 *                 --------------------------------------------------------
 	 *
@@ -101,9 +101,9 @@ void ClockHardwareSetup(void){
 		OSTC = 0xF0;
 
 	/*
-	 * 				  Format of System Clock Control Register (CKC)
+	 *                Format of System Clock Control Register (CKC)
 	 *
-	 * 				  7     6     5     4      3     2     1     0
+	 * 	          7     6     5     4      3     2     1     0
 	 *              ------------------------------------------------
 	 *             | CLS | CSS | MCS | MCM0 |  0  |  0  |  0  |  0  |
 	 *              ------------------------------------------------
@@ -153,32 +153,32 @@ void ClockHardwareSetup(void){
 	 *       ADCEN     Control of A/D converter input clock supply
 	 *
 	 *         0           Stops input clock supply
-	 * 		   1           Enables input clock supply
+	 *         1           Enables input clock supply
 	 *
-	 * 		 IICA0EN   Control of serial interface IICA0 input clock supply
+	 *       IICA0EN   Control of serial interface IICA0 input clock supply
 	 *
-	 * 		   0           Stops input clock supply
-	 * 		   1           Enables input clock supply
+	 * 	   0           Stops input clock supply
+	 *         1           Enables input clock supply
 	 *
-	 * 		 SAU1EN    Control of serial array unit 1 input clock supply
+	 *       SAU1EN    Control of serial array unit 1 input clock supply
 	 *
-	 * 		   0           Stops input clock supply
-	 * 		   1           Enables input clock supply
+	 *         0           Stops input clock supply
+	 *         1           Enables input clock supply
 	 *
-	 * 		 SAU0EN    Control of serial array unit 0 input clock supply
+	 *       SAU0EN    Control of serial array unit 0 input clock supply
 	 *
-	 * 		   0           Stops input clock supply
-	 * 		   1           Enables input clock supply
+	 * 	   0           Stops input clock supply
+	 * 	   1           Enables input clock supply
 	 *
-	 * 		 TAU1EN    Control of timer array unit 1 input clock supply
+	 *       TAU1EN    Control of timer array unit 1 input clock supply
 	 *
-	 * 		   0           Stops input clock supply
-	 * 		   1           Enables input clock supply
+	 * 	    0           Stops input clock supply
+	 * 	    1           Enables input clock supply
 	 *
-	 * 		 TAU0EN Control of timer array unit 0 input clock supply
+	 *       TAU0EN Control of timer array unit 0 input clock supply
 	 *
-	 * 		   0           Stops input clock supply
-	 * 		   1           Enables input clock supply
+	 *          0           Stops input clock supply
+	 *          1           Enables input clock supply
 	 *
 	 */
 
