@@ -136,9 +136,9 @@ void ClockHardwareSetup(void){
 	/*
 	 * 				            Peripheral enable register 0 (PER0)
 	 *
-	 * 		      -----------------------------------------------------------------------
+	 * 	          -----------------------------------------------------------------------
 	 * 	         | RTCEN | IICA1EN | ADCEN | IICA0EN | SAU1EN | SAU0EN | TAU1EN | TAU0EN |
-	 *            -----------------------------------------------------------------------
+	 *                -----------------------------------------------------------------------
 	 *
 	 *       RTCEN     Control of real-time clock (RTC) and interval timer input clock supply
 	 *
