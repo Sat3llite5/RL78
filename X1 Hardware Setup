@@ -26,7 +26,7 @@ void ClockHardwareSetup(void){
 	 *
 	 *  Control of X1 clock oscillation frequency (AMPH)
 	 *
-	 *    0     1 MHz ≤ fX ≤ 10 MHz
+	 *    0         1 MHz ≤ fX ≤ 10 MHz
 	 *    1 	10 MHz < fX ≤ 20 MHz
 	 *
 	 *  XT1 oscillator oscillation mode selection (AMPHS0,AMPHS1)
@@ -34,7 +34,7 @@ void ClockHardwareSetup(void){
 	 *    AMPHS1  AMPHS0
 	 *
 	 *      0        0        Low power consumption oscillation (default)
-	 *      0 		 1        Normal oscillation
+	 *      0        1        Normal oscillation
 	 *      1        0        Ultra-low power consumption oscillation
 	 *      1        1        Setting prohibited
 	 *
